@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Glassdeck: turn the phone in your drawer into a desk panel</title>
-<meta name="description" content="Glassdeck turns a spare phone into a live desk panel for your Windows PC or Mac. Answer your AI coding agent from your desk, and see your system, music, mixer and more. Free.">
+<meta name="description" content="Glassdeck turns a spare phone into a live desk panel for your Windows PC, Mac or Linux PC. Answer your AI coding agent from your desk, and see your system, music, mixer and more. Free.">
 <meta name="theme-color" content="#0a0a0a">
 <meta property="og:title" content="Glassdeck">
-<meta property="og:description" content="Turn the phone in your drawer into a desk panel for your Windows PC or Mac. Free.">
+<meta property="og:description" content="Turn the phone in your drawer into a desk panel for your Windows PC, Mac or Linux PC. Free.">
 <meta property="og:image" content="https://arjun-nair1090.github.io/glassdeck-releases/media/tour.jpg">
 <meta property="og:url" content="https://arjun-nair1090.github.io/glassdeck-releases/">
 <link rel="canonical" href="https://arjun-nair1090.github.io/glassdeck-releases/">
@@ -16,35 +16,62 @@
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+/* Decide before the first paint: the 3D page needs WebGL 2 and no reduced-motion or data-saver preference.
+   Anything else, or a script that never arrives, gets the flat page. */
+(function () {
+  var d = document.documentElement, ok = false;
+  try {
+    var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var save = navigator.connection && navigator.connection.saveData;
+    if (!still && !save) {
+      var c = document.createElement('canvas'), g = c.getContext('webgl2');
+      ok = !!g;
+      var l = g && g.getExtension('WEBGL_lose_context');
+      if (l) l.loseContext();
+    }
+  } catch (e) { ok = false; }
+  d.className += ok ? ' gl' : ' flat';
+  if (ok) setTimeout(function () {
+    if (!window.__gdStarted) { d.className = d.className.replace(/\bgl\b/, '') + ' flat'; }
+  }, 9000);
+})();
+</script>
 <link rel="stylesheet" href="style.css">
+<script type="module" src="js/main.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
+<canvas id="gl" aria-hidden="true"></canvas>
 
 <header class="top">
-  <a class="brand" href="./"><img src="icon-192.png" alt="" width="32" height="32"><span>Glassdeck</span></a>
-  <nav aria-label="Sections">
-    <a href="#ai">AI agents</a>
-    <a href="#pages">Pages</a>
-    <a href="#setup">Setup</a>
-    <a href="#faq">Questions</a>
-    <a class="nav-dl" href="#downloads">Download</a>
-  </nav>
+  <div class="top-in">
+    <a class="brand" href="#top"><img src="icon-192.png" alt="" width="32" height="32"><span>Glassdeck</span></a>
+    <nav aria-label="Sections">
+      <a href="#ai">AI agents</a>
+      <a href="#pages">Pages</a>
+      <a href="#setup">Setup</a>
+      <a href="#faq">Questions</a>
+      <a class="nav-dl" href="#downloads">Download</a>
+    </nav>
+  </div>
 </header>
 
 <main id="main">
-  <section class="hero" aria-labelledby="wordmark">
+  <section class="hero" id="top" aria-labelledby="wordmark">
     <h1 id="wordmark" class="wordmark">Glassdeck</h1>
     <div class="bar" aria-hidden="true"></div>
     <div class="hero-copy">
       <p class="lede">Turn the phone in your drawer into a desk panel.</p>
-      <p class="sub">It shows what your computer is doing and what your AI coding agent needs from you, and lets you answer from your desk. Free, for Windows and Mac.</p>
-      <div class="cta">
-        <a class="btn" id="dl-main" href="#downloads">Download Glassdeck</a>
-        <p class="cta-note" id="dl-note">For Windows 10 and 11, and macOS 13 or later. <a href="#downloads">All downloads</a></p>
+      <div class="hero-side">
+        <p class="sub">It shows what your computer is doing and what your AI coding agent needs from you, and lets you answer from your desk. Free, for Windows, Mac and Linux.</p>
+        <div class="cta">
+          <a class="btn" id="dl-main" href="#downloads">Download Glassdeck</a>
+          <p class="cta-note" id="dl-note">For Windows 10 and 11, macOS 13 or later, and Linux. <a href="#downloads">All downloads</a></p>
+        </div>
       </div>
     </div>
-    <div class="stage">
+    <div class="stage flat-only">
       <svg class="ridges" id="ridges" aria-hidden="true" preserveAspectRatio="none"></svg>
       <figure class="phone">
         <video class="auto" src="media/hero.mp4" poster="media/hero.jpg" muted loop playsinline preload="metadata"
@@ -53,12 +80,24 @@
     </div>
   </section>
 
-  <section class="ai" id="ai" aria-labelledby="ai-h">
-    <h2 id="ai-h" class="quote">Claude needed one keypress. I saw it 23&nbsp;minutes later.</h2>
-    <p class="intro">Glassdeck started there. When Claude Code, Codex, Antigravity or Gemini CLI finishes or needs your permission, the phone beside your keyboard shows it, and rings and vibrates like any app.</p>
-    <div class="ai-grid">
+  <section class="story" id="ai" aria-label="AI agents">
+    <div class="sticky">
+      <div class="beats">
+        <div class="beat"><h2 class="quote">Claude needed one keypress.</h2></div>
+        <div class="beat"><h2 class="quote">I saw it 23&nbsp;minutes later.</h2></div>
+        <div class="beat">
+          <h2>Now the phone beside your keyboard tells&nbsp;you.</h2>
+          <p class="intro">When Claude Code, Codex, Antigravity or Gemini CLI finishes or needs your permission, the phone shows it, and rings and vibrates like any app.</p>
+        </div>
+        <div class="beat">
+          <h2>Allow it, deny it or answer it from your desk.</h2>
+          <p class="intro">Commands, file edits with the exact change, and web requests. Glassdeck can type your reply into the terminal, with Claude Code on Windows.</p>
+        </div>
+      </div>
+    </div>
+    <div class="ai-grid flat-only">
       <figure>
-        <video class="auto" src="media/perm-edit.mp4" poster="media/perm-edit.jpg" muted loop playsinline preload="none" aria-label="A permission prompt showing the exact change to a file"></video>
+        <video class="auto" src="media/perm.mp4" poster="media/perm.jpg" muted loop playsinline preload="none" aria-label="A permission prompt for a shell command, answered on the phone"></video>
         <figcaption><b>Allow or deny from the phone</b>Commands, file edits with the exact change, and web requests.</figcaption>
       </figure>
       <figure>
@@ -73,28 +112,42 @@
   </section>
 
   <section class="pages" id="pages" aria-labelledby="pages-h">
-    <h2 id="pages-h">And the rest of your desk.</h2>
-    <p class="intro">Seventeen live pages. Swipe between them, or let Auto mode show whatever is happening: an AI waiting, a timer, your music, your next meeting, otherwise the clock.</p>
-    <ul class="gallery">
-      <li><video class="auto" src="media/system.mp4" poster="media/system.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><b>System</b><span>CPU, GPU, memory, temperatures, network and disks.</span></li>
-      <li><video class="auto" src="media/procs.mp4" poster="media/procs.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><b>Processes</b><span>Find what's slowing the computer down and end it.</span></li>
-      <li><video class="auto" src="media/mixer.mp4" poster="media/mixer.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><b>Mixer</b><span>Volume for each app, the microphone and the output device.</span></li>
-      <li><video class="auto" src="media/deck.mp4" poster="media/deck.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><b>Deck</b><span>Buttons for apps, shortcuts and scripts, like a Stream Deck.</span></li>
-      <li><video class="auto" src="media/trackpad.mp4" poster="media/trackpad.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><b>Trackpad</b><span>A trackpad and keyboard for the computer.</span></li>
-      <li><video class="auto" src="media/music.mp4" poster="media/music.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><b>Music</b><span>What's playing, with lyrics that follow along.</span></li>
-      <li><video class="auto" src="media/dev.mp4" poster="media/dev.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><b>Dev</b><span>Your projects, local servers and test runs.</span></li>
-      <li><video class="auto" src="media/weather.mp4" poster="media/weather.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><b>Weather</b><span>Now, the next 24 hours and the week ahead.</span></li>
-      <li><video class="auto" src="media/night.mp4" poster="media/night.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><b>Night clock</b><span>A dim red clock when the lights are off.</span></li>
-    </ul>
+    <div class="sticky">
+      <div class="pages-head">
+        <h2 id="pages-h">And the rest of your desk.</h2>
+        <p class="intro">Seventeen live pages. Swipe between them, or let Auto mode show whatever is happening.</p>
+      </div>
+      <ol class="gallery">
+        <li><video class="auto flat-only" src="media/system.mp4" poster="media/system.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="num">01</span><b>System</b><span>CPU, GPU, memory, temperatures, network and disks.</span></li>
+        <li><video class="auto flat-only" src="media/procs.mp4" poster="media/procs.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="num">02</span><b>Processes</b><span>Find what's slowing the computer down and end it.</span></li>
+        <li><video class="auto flat-only" src="media/music.mp4" poster="media/music.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="num">03</span><b>Music</b><span>What's playing, with lyrics that follow along.</span></li>
+        <li><video class="auto flat-only" src="media/mixer.mp4" poster="media/mixer.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="num">04</span><b>Mixer</b><span>Volume for each app, the microphone and the output device.</span></li>
+        <li><video class="auto flat-only" src="media/deck.mp4" poster="media/deck.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="num">05</span><b>Deck</b><span>Buttons for apps, shortcuts and scripts, like a Stream Deck.</span></li>
+        <li><video class="auto flat-only" src="media/trackpad.mp4" poster="media/trackpad.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="num">06</span><b>Trackpad</b><span>A trackpad and keyboard for the computer.</span></li>
+        <li><video class="auto flat-only" src="media/ai.mp4" poster="media/ai.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="num">08</span><b>AI usage</b><span>Tokens, sessions and usage limits across your AI tools.</span></li>
+        <li><video class="auto flat-only" src="media/dev.mp4" poster="media/dev.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="num">09</span><b>Dev</b><span>Your projects, local servers and test runs.</span></li>
+        <li><video class="auto flat-only" src="media/weather.mp4" poster="media/weather.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="num">12</span><b>Weather</b><span>Now, the next 24 hours and the week ahead.</span></li>
+        <li><video class="auto flat-only" src="media/night.mp4" poster="media/night.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="num">00</span><b>Night clock</b><span>A dim red clock when the lights are off.</span></li>
+      </ol>
+      <ol class="rail gl-only" aria-hidden="true">
+        <li>01<span>SYS</span></li><li>02<span>PROC</span></li><li>03<span>MUS</span></li><li>04<span>MIX</span></li><li>05<span>DECK</span></li>
+        <li>06<span>PAD</span></li><li>08<span>AI</span></li><li>09<span>DEV</span></li><li>12<span>WX</span></li><li>00<span>NIGHT</span></li>
+      </ol>
+    </div>
   </section>
 
   <section class="setup" id="setup" aria-labelledby="setup-h">
-    <h2 id="setup-h">Set up in three steps.</h2>
-    <ol class="steps">
-      <li><b>Download Glassdeck and open it.</b><span>It lives in the tray on Windows, or the menu bar on a Mac, and opens a page with a QR code.</span></li>
-      <li><b>Scan the QR code with your phone.</b><span>Use the camera. The phone and the computer need to be on the same Wi-Fi; away from home, <a href="https://tailscale.com">Tailscale</a> connects them.</span></li>
-      <li><b>Add it to your Home Screen.</b><span>It then opens full screen and keeps the screen awake. Nothing comes from an app store: it works on iPhone, Android phones and tablets.</span></li>
-    </ol>
+    <div class="sticky">
+      <h2 id="setup-h">Set up in three steps.</h2>
+      <div class="steps-wrap">
+        <div class="steps-line gl-only" aria-hidden="true"><div class="steps-fill"></div></div>
+        <ol class="steps">
+          <li><b>Download Glassdeck and open it.</b><span>It lives in the tray on Windows, the menu bar on a Mac or the app menu on Linux, and opens a page with a QR code.</span></li>
+          <li><b>Scan the QR code with your phone.</b><span>Use the camera. The phone and the computer need to be on the same Wi-Fi; away from home, <a href="https://tailscale.com">Tailscale</a> connects them.</span></li>
+          <li><b>Add it to your Home Screen.</b><span>It then opens full screen and keeps the screen awake. Nothing comes from an app store: it works on iPhone, Android phones and tablets.</span></li>
+        </ol>
+      </div>
+    </div>
   </section>
 
   <section class="tour" id="tour" aria-labelledby="tour-h">
@@ -119,8 +172,12 @@
         <div><b>Mac with Intel</b><span>macOS 13 or later</span></div>
         <a class="btn" href="https://github.com/arjun-nair1090/glassdeck-releases/releases/latest/download/Glassdeck-mac-intel.dmg">Download for Intel Mac</a>
       </li>
+      <li data-os="linux">
+        <div><b>Linux</b><span>64-bit PC. Ubuntu 22.04, Debian 12, Fedora 36 or newer</span></div>
+        <a class="btn" href="https://github.com/arjun-nair1090/glassdeck-releases/releases/latest/download/Glassdeck-linux-x86_64.AppImage">Download for Linux</a>
+      </li>
     </ul>
-    <p class="fine">Not sure which Mac you have? Open the Apple menu and choose About This Mac: a chip named Apple M1, M2 or later means Apple Silicon. <a href="https://github.com/arjun-nair1090/glassdeck-releases/releases/latest">Release notes and checksums</a></p>
+    <p class="fine">Not sure which Mac you have? Open the Apple menu and choose About This Mac: a chip named Apple M1, M2 or later means Apple Silicon. On Linux, allow the downloaded file to run as a program (in its Properties, or <code>chmod +x</code>) and open it. <a href="https://github.com/arjun-nair1090/glassdeck-releases/releases/latest">Release notes and checksums</a></p>
   </section>
 
   <section class="faq" id="faq" aria-labelledby="faq-h">
@@ -132,17 +189,16 @@
     <details><summary>Can I use it away from home?</summary><p>Yes. Install <a href="https://tailscale.com">Tailscale</a> on the computer and the phone and sign in to the same account; it's free for personal use. Glassdeck's pairing page then shows a QR code that works anywhere.</p></details>
     <details><summary>Windows says "Windows protected your PC".</summary><p>Glassdeck isn't code-signed yet. Click <b>More info</b>, then <b>Run anyway</b>. You only need to do this once.</p></details>
     <details><summary>My Mac says Glassdeck can't be opened.</summary><p>Click <b>Done</b>. Then open <b>System Settings</b>, go to <b>Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b> next to Glassdeck. The first time you use them, also allow Accessibility (keyboard, trackpad and buttons), Screen Recording (the screen view) and Automation (music control) in the same place.</p></details>
-    <details><summary>How do updates work?</summary><p>Glassdeck checks for a new version every few hours. When there is one, choose <b>Update now</b> in its tray or menu-bar menu, or in Settings on the phone. It installs the update and restarts by itself.</p></details>
-    <details><summary>How do I uninstall it?</summary><p>On Windows, open Settings, then Apps, and uninstall Glassdeck; it also removes what it added to your AI tools' settings. On a Mac, quit Glassdeck from the menu bar and move it to the Bin.</p></details>
+    <details><summary>How do I set it up on Linux?</summary><p>Open the AppImage once. It adds Glassdeck to your app menu and starts it when you log in. Sound needs PulseAudio or PipeWire, which almost every desktop has. On Wayland, the pairing page shows one command that lets Glassdeck use the keyboard and mouse, the way remote-desktop apps do.</p></details>
+    <details><summary>How do updates work?</summary><p>Glassdeck checks for a new version every few hours. When there is one, choose <b>Update now</b> in Settings on the phone, or in the tray or menu-bar menu on Windows and Mac. It installs the update and restarts by itself.</p></details>
+    <details><summary>How do I uninstall it?</summary><p>On Windows, open Settings, then Apps, and uninstall Glassdeck; it also removes what it added to your AI tools' settings. On a Mac, quit Glassdeck from the menu bar and move it to the Bin. On Linux, right-click Glassdeck in the app menu, choose <b>Quit Glassdeck</b> and delete the AppImage.</p></details>
   </section>
 </main>
 
 <footer class="foot">
-  <a class="brand" href="./"><img src="icon-192.png" alt="" width="32" height="32"><span>Glassdeck</span></a>
+  <a class="brand" href="#top"><img src="icon-192.png" alt="" width="32" height="32"><span>Glassdeck</span></a>
   <p>Free to use under the <a href="https://github.com/arjun-nair1090/glassdeck-releases/blob/main/LICENSE">FSL-1.1-MIT licence</a>. Music in the tour: "Circuit Synthwave Alt" by <a href="https://freesound.org/s/460358/">Doctor_Dreamchip</a> (CC0).</p>
   <p><a href="https://github.com/arjun-nair1090/glassdeck-releases/releases">All releases</a></p>
 </footer>
-
-<script src="site.js" defer></script>
 </body>
 </html>
