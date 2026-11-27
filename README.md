@@ -1,3 +1,5 @@
+<p align="center"><img src="icon.png" alt="Glassdeck icon: the GD monogram with a red bar" width="96"></p>
+
 # Glassdeck
 
 Turn any phone into a live desk panel for your Windows PC or Mac: an old iPhone, an Android phone or a tablet. Nothing to install on the phone.
