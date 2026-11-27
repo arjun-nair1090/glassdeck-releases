@@ -108,14 +108,19 @@ figcaption b, .gallery b { display: block; color: var(--ink); font-weight: 600; 
 .tour-video { width: 100%; margin-top: clamp(36px, 4vw, 56px); border: 1px solid var(--rule); border-radius: 14px; background: #000; aspect-ratio: 16 / 9; }
 
 /* ---- downloads */
-.dl-list { list-style: none; padding: 0; margin: clamp(36px, 4vw, 56px) 0 0; border-bottom: 1px solid var(--rule2); }
-.dl-list li { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; padding: 26px 0; border-top: 1px solid var(--rule2); }
-.dl-list b { display: block; font-weight: 600; font-stretch: 118%; font-size: clamp(20px, 2vw, 26px); }
-.dl-list span { color: var(--ink2); font-size: 16px; }
-.dl-list .btn { min-width: 250px; }
+.dl-list { list-style: none; padding: 0; margin: clamp(36px, 4vw, 56px) 0 0; border: 1px solid var(--rule); border-radius: 18px; background: #0c0c0c; overflow: hidden; }
+.dl-list li { display: grid; grid-template-columns: minmax(0, 1fr) 268px; align-items: center; gap: 14px 28px; padding: 24px clamp(20px, 2.2vw, 30px); }
+.dl-list li + li { border-top: 1px solid var(--rule); }
+.dl-list li.mine { background: #131313; }
+.dl-list b { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; font-weight: 600; font-stretch: 118%; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.2; }
+.dl-list span { display: block; margin-top: 4px; color: var(--ink2); font-size: 15px; line-height: 1.45; }
+.dl-list .btn { width: 100%; font-size: 16px; white-space: nowrap; padding-left: 14px; padding-right: 14px; }
 .dl-list li:not(.mine) .btn { background: transparent; border-color: var(--rule2); color: var(--ink); }
-.dl-list li:not(.mine) .btn:hover { border-color: var(--ink2); }
-.dl-list li.mine b::after { content: "Your computer"; margin-left: 14px; font-size: 14px; font-weight: 500; font-stretch: 100%; color: #f0574e; vertical-align: .2em; }
+.dl-list li:not(.mine) .btn:hover { border-color: var(--ink2); background: #1a1a1a; }
+.dl-list li.mine b::after { content: "Your computer"; font-size: 13px; font-weight: 500; font-stretch: 100%; line-height: 1; color: #f0574e; padding: 5px 10px; border: 1px solid rgba(227, 55, 45, .45); border-radius: 99px; }
+@media (max-width: 640px) {
+  .dl-list li { grid-template-columns: 1fr; padding: 22px 20px; }
+}
 .fine { color: var(--ink3); font-size: 15px; margin-top: 22px; max-width: 46em; }
 .fine a { color: var(--ink2); }
 
@@ -196,8 +201,7 @@ figcaption b, .gallery b { display: block; color: var(--ink); font-weight: 600; 
 /* tour, downloads, questions: the scene dims behind them */
 .gl .tour-video { will-change: transform; }
 .gl .downloads { padding-top: clamp(140px, 22vh, 240px); }
-.gl .downloads > * { max-width: min(100%, 640px); }
-.gl .downloads .dl-list { background: rgba(10, 10, 10, .55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.gl .downloads > * { max-width: min(100%, 720px); }
 .gl .faq, .gl .foot { background: rgba(10, 10, 10, .6); }
 
 /* phones and narrow windows: words on top, the scene underneath */
