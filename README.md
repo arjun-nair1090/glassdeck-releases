@@ -2,6 +2,8 @@
 
 # Glassdeck
 
+**Website: [arjun-nair1090.github.io/glassdeck-releases](https://arjun-nair1090.github.io/glassdeck-releases/)**
+
 Turn any phone into a live desk panel for your Windows PC or Mac: an old iPhone, an Android phone or a tablet. Nothing to install on the phone.
 
 It shows whatever needs you, like your AI coding agent (Claude Code, Codex, Antigravity or Gemini CLI) finishing or waiting for you, and lets you answer its permission prompts from the phone. It also has system stats, a volume mixer, a Stream Deck, a trackpad, synced lyrics, weather, a night clock and more.
