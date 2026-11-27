@@ -31,7 +31,7 @@ p { margin: 0; }
 #gl { display: none; }
 
 /* ---- header (fixed in both modes) */
-.top { position: fixed; top: 0; left: 0; right: 0; z-index: 10; background: linear-gradient(rgba(10, 10, 10, .92), rgba(10, 10, 10, .6) 60%, rgba(10, 10, 10, 0)); }
+.top { position: fixed; top: 0; left: 0; right: 0; z-index: 10; background: rgba(10, 10, 10, .82); -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2); }
 .top-in { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px var(--pad); max-width: var(--max); margin: 0 auto; }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 600; font-stretch: 125%; font-size: 17px; }
 .brand img { border-radius: 8px; }
@@ -153,14 +153,14 @@ figcaption b, .gallery b { display: block; color: var(--ink); font-weight: 600; 
 /* words over the scene stay readable: a soft shade on their side of the screen */
 .gl .story .sticky::before, .gl .pages .sticky::before, .gl .setup .sticky::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(90deg, rgba(10, 10, 10, .9) 0%, rgba(10, 10, 10, .6) 30%, rgba(10, 10, 10, 0) 52%);
+  background: linear-gradient(90deg, rgba(10, 10, 10, .94) 0%, rgba(10, 10, 10, .78) 34%, rgba(10, 10, 10, 0) 56%);
 }
 
 /* the 23-minute story */
 .gl .story { max-width: none; padding: 0; height: 560vh; }
 .gl .beats { position: absolute; left: var(--inset); top: 0; bottom: 0; width: min(42vw, 600px); }
 .gl .beat { position: absolute; left: 0; right: 0; top: 50%; translate: 0 -50%; opacity: 0; visibility: hidden; }
-.gl .beat h2 { font-size: clamp(34px, 4.4vw, 68px); max-width: 13ch; }
+.gl .beat h2 { font-size: clamp(32px, 3.7vw, 60px); max-width: 13ch; }
 .gl .beat .intro { margin-top: 26px; max-width: 30em; }
 
 /* the pages */
@@ -218,9 +218,9 @@ figcaption b, .gallery b { display: block; color: var(--ink); font-weight: 600; 
   .gl .rail { display: none; }
   .gl .setup h2 { left: var(--pad); top: clamp(84px, 11vh, 120px); font-size: clamp(28px, 7.5vw, 40px); }
   .gl .steps-wrap { left: var(--pad); right: var(--pad); width: auto; top: auto; bottom: clamp(24px, 5vh, 56px); translate: none; gap: 18px; }
-  .gl .steps { gap: 0; }
-  .gl .steps li { display: none; }
-  .gl .steps li.on { display: block; }
+  .gl .steps { gap: 0; align-items: end; }
+  .gl .steps li { grid-area: 1 / 1; visibility: hidden; }
+  .gl .steps li.on { visibility: visible; }
   .gl .downloads > * { max-width: none; }
   .gl .downloads { background: linear-gradient(rgba(10, 10, 10, 0), rgba(10, 10, 10, .75) 30%); }
 }
