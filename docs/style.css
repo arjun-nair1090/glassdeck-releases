@@ -140,7 +140,7 @@ figcaption b, .gallery b { display: block; color: var(--ink); font-weight: 600; 
 /* =====================================================================================================
    The 3D scroll film. The canvas sits behind everything; sticky stages hold the words while the scene moves.
    ===================================================================================================== */
-.gl #gl { display: block; position: fixed; top: 0; left: 0; width: 100vw; height: 100lvh; z-index: 0; opacity: 0; pointer-events: none; }
+.gl #gl { display: block; position: fixed; top: 0; left: 0; width: 100vw; height: 100lvh; z-index: 0; opacity: 0; pointer-events: none; mix-blend-mode: lighten; }
 .gl .sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 .gl:not(.gl-ready) .hero .wordmark, .gl:not(.gl-ready) .hero .bar, .gl:not(.gl-ready) .hero-copy,
 .gl:not(.gl-ready) .beat, .gl:not(.gl-ready) .gallery li, .gl:not(.gl-ready) .rail { visibility: hidden; }
