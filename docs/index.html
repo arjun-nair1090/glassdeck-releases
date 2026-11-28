@@ -37,8 +37,8 @@
   }, 9000);
 })();
 </script>
-<link rel="stylesheet" href="style.css?v=871e6ca31a">
-<script type="module" src="js/main.js?v=871e6ca31a"></script>
+<link rel="stylesheet" href="style.css?v=b0b0369a07">
+<script type="module" src="js/main.js?v=b0b0369a07"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -177,6 +177,10 @@
         <a class="btn" href="https://github.com/arjun-nair1090/glassdeck-releases/releases/latest/download/Glassdeck-linux-x86_64.AppImage">Download for Linux</a>
       </li>
     </ul>
+    <div class="mac-term" id="mac-term">
+      <p><b>On a Mac, installing from Terminal is easiest.</b> Glassdeck isn't signed by Apple yet, so macOS blocks the download above until you allow it. Installed this way, it opens straight away. Open Terminal, paste this line and press Return:</p>
+      <div class="cmd"><code id="mac-cmd">curl -fsSL https://arjun-nair1090.github.io/glassdeck-releases/install-mac.sh | sh</code><button type="button" class="copy" data-copy="mac-cmd">Copy</button></div>
+    </div>
     <p class="fine">Not sure which Mac you have? Open the Apple menu and choose About This Mac: a chip named Apple M1, M2 or later means Apple Silicon. On Linux, allow the downloaded file to run as a program (in its Properties, or <code>chmod +x</code>) and open it. <a href="https://github.com/arjun-nair1090/glassdeck-releases/releases/latest">Release notes and checksums</a></p>
   </section>
 
@@ -188,7 +192,7 @@
     <details><summary>Is it safe to run on my network?</summary><p>The panel only answers phones that scanned your computer's QR code, which carries a private access key. Glassdeck never opens ports on your router, and there's no Glassdeck server in between: your phone talks straight to your computer. Notifications travel through Apple's or Google's push service, encrypted.</p></details>
     <details><summary>Can I use it away from home?</summary><p>Yes. Install <a href="https://tailscale.com">Tailscale</a> on the computer and the phone and sign in to the same account; it's free for personal use. Glassdeck's pairing page then shows a QR code that works anywhere.</p></details>
     <details><summary>Windows says "Windows protected your PC".</summary><p>Glassdeck isn't code-signed yet. Click <b>More info</b>, then <b>Run anyway</b>. You only need to do this once.</p></details>
-    <details><summary>My Mac says Glassdeck can't be opened.</summary><p>Click <b>Done</b>. Then open <b>System Settings</b>, go to <b>Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b> next to Glassdeck. The first time you use them, also allow Accessibility (keyboard, trackpad and buttons), Screen Recording (the screen view) and Automation (music control) in the same place.</p></details>
+    <details><summary>My Mac says Glassdeck can't be opened.</summary><p>Glassdeck isn't signed by Apple yet, so macOS blocks it when it comes from a browser. The quickest fix is to install it from Terminal instead: open Terminal, paste <code>curl -fsSL https://arjun-nair1090.github.io/glassdeck-releases/install-mac.sh | sh</code> and press Return. It opens straight away, and running it again updates it. If you already dragged it into Applications, paste <code>xattr -dr com.apple.quarantine /Applications/Glassdeck.app</code> into Terminal instead, then open it again. Or, without Terminal: click <b>Done</b>, open <b>System Settings</b>, go to <b>Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b> next to Glassdeck. The first time you use them, also allow Accessibility (keyboard, trackpad and buttons), Screen Recording (the screen view) and Automation (music control) in the same place.</p></details>
     <details><summary>How do I set it up on Linux?</summary><p>Open the AppImage once. It adds Glassdeck to your app menu and starts it when you log in. Sound needs PulseAudio or PipeWire, which almost every desktop has. On Wayland, the pairing page shows one command that lets Glassdeck use the keyboard and mouse, the way remote-desktop apps do.</p></details>
     <details><summary>How do updates work?</summary><p>Glassdeck checks for a new version every few hours. When there is one, choose <b>Update now</b> in Settings on the phone, or in the tray or menu-bar menu on Windows and Mac. It installs the update and restarts by itself.</p></details>
     <details><summary>How do I uninstall it?</summary><p>On Windows, open Settings, then Apps, and uninstall Glassdeck; it also removes what it added to your AI tools' settings. On a Mac, quit Glassdeck from the menu bar and move it to the Bin. On Linux, right-click Glassdeck in the app menu, choose <b>Quit Glassdeck</b> and delete the AppImage.</p></details>
