@@ -40,7 +40,13 @@ On Linux with Wayland (the default on Ubuntu and Fedora), the pairing page shows
 The downloads aren't code-signed yet, so the first time you open Glassdeck:
 
 - **Windows** may say "Windows protected your PC". Click **More info**, then **Run anyway**. If Windows asks whether Glassdeck may use the network, choose **Allow**.
-- **macOS** may say Glassdeck "can't be opened". Click **Done**, then go to **System Settings → Privacy & Security**, scroll down and click **Open Anyway**.
+- **macOS** blocks a copy downloaded in a browser. The easiest way is to install from Terminal instead; Glassdeck then opens straight away, and running the line again updates it:
+
+  ```sh
+  curl -fsSL https://arjun-nair1090.github.io/glassdeck-releases/install-mac.sh | sh
+  ```
+
+  Already dragged it into Applications? Run `xattr -dr com.apple.quarantine /Applications/Glassdeck.app` and open it again. Or, without Terminal: when macOS says Glassdeck "can't be opened", click **Done**, go to **System Settings → Privacy & Security**, scroll down and click **Open Anyway**.
 
 ## Updates
 
