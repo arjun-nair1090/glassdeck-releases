@@ -37,8 +37,8 @@
   }, 9000);
 })();
 </script>
-<link rel="stylesheet" href="style.css?v=b0b0369a07">
-<script type="module" src="js/main.js?v=b0b0369a07"></script>
+<link rel="stylesheet" href="style.css?v=376fa59e54">
+<script type="module" src="js/main.js?v=376fa59e54"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -164,24 +164,16 @@
         <div><b>Windows</b><span>Windows 10 and 11</span></div>
         <a class="btn" href="https://github.com/arjun-nair1090/glassdeck-releases/releases/latest/download/Glassdeck-Setup.exe">Download for Windows</a>
       </li>
-      <li data-os="mac-arm">
-        <div><b>Mac with Apple Silicon</b><span>M1 or later, macOS 13 or later</span></div>
-        <a class="btn" href="https://github.com/arjun-nair1090/glassdeck-releases/releases/latest/download/Glassdeck-mac-arm64.dmg">Download for Apple Silicon</a>
-      </li>
-      <li data-os="mac-intel">
-        <div><b>Mac with Intel</b><span>macOS 13 or later</span></div>
-        <a class="btn" href="https://github.com/arjun-nair1090/glassdeck-releases/releases/latest/download/Glassdeck-mac-intel.dmg">Download for Intel Mac</a>
+      <li data-os="mac" id="dl-mac" class="mac-row">
+        <div><b>Mac</b><span>Apple Silicon or Intel, macOS 13 or later. Open Terminal, paste this line and press Return: it installs Glassdeck in Applications and opens it. Run it again to update.</span></div>
+        <div class="cmd"><code id="mac-cmd">curl -fsSL https://arjun-nair1090.github.io/glassdeck-releases/install-mac.sh | sh</code><button type="button" class="copy" data-copy="mac-cmd">Copy</button></div>
       </li>
       <li data-os="linux">
         <div><b>Linux</b><span>64-bit PC. Ubuntu 22.04, Debian 12, Fedora 36 or newer</span></div>
         <a class="btn" href="https://github.com/arjun-nair1090/glassdeck-releases/releases/latest/download/Glassdeck-linux-x86_64.AppImage">Download for Linux</a>
       </li>
     </ul>
-    <div class="mac-term" id="mac-term">
-      <p><b>On a Mac, installing from Terminal is easiest.</b> Glassdeck isn't signed by Apple yet, so macOS blocks the download above until you allow it. Installed this way, it opens straight away. Open Terminal, paste this line and press Return:</p>
-      <div class="cmd"><code id="mac-cmd">curl -fsSL https://arjun-nair1090.github.io/glassdeck-releases/install-mac.sh | sh</code><button type="button" class="copy" data-copy="mac-cmd">Copy</button></div>
-    </div>
-    <p class="fine">Not sure which Mac you have? Open the Apple menu and choose About This Mac: a chip named Apple M1, M2 or later means Apple Silicon. On Linux, allow the downloaded file to run as a program (in its Properties, or <code>chmod +x</code>) and open it. <a href="https://github.com/arjun-nair1090/glassdeck-releases/releases/latest">Release notes and checksums</a></p>
+    <p class="fine">On Linux, allow the downloaded file to run as a program (in its Properties, or <code>chmod +x</code>) and open it. <a href="https://github.com/arjun-nair1090/glassdeck-releases/releases/latest">Release notes and checksums</a></p>
   </section>
 
   <section class="faq" id="faq" aria-labelledby="faq-h">
